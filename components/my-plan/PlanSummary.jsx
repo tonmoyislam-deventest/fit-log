@@ -1,4 +1,16 @@
-const PlanSummary = () => {
+const PlanSummary = ({ items }) => {
+    const totalExercises = items.length;
+
+    const totalMinutes = items.reduce(
+        (total, workout) => total + workout.duration,
+        0
+    );
+
+    const totalCalories = items.reduce(
+        (total, workout) => total + workout.caloriesBurned,
+        0
+    );
+
     return (
         <div className="mt-7 grid overflow-hidden rounded-xl border border-[#272b33] bg-[#15171c] sm:mt-8 sm:grid-cols-3">
 
@@ -9,7 +21,7 @@ const PlanSummary = () => {
                 </p>
 
                 <p className="mt-2 text-4xl font-black leading-none text-[#ccff00] sm:text-5xl">
-                    2
+                    {totalExercises}
                 </p>
             </div>
 
@@ -20,7 +32,7 @@ const PlanSummary = () => {
                 </p>
 
                 <p className="mt-2 text-4xl font-black leading-none text-white sm:text-5xl">
-                    23
+                    {totalMinutes}
                 </p>
             </div>
 
@@ -31,7 +43,7 @@ const PlanSummary = () => {
                 </p>
 
                 <p className="mt-2 text-4xl font-black leading-none text-white sm:text-5xl">
-                    190
+                    {totalCalories}
                 </p>
             </div>
 

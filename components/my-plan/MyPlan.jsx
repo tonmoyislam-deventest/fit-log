@@ -32,7 +32,7 @@ const MyPlan = () => {
                     <MyPlanHeader />
 
                     {/* Summary */}
-                    <PlanSummary />
+                    <PlanSummary items={currentItems} />
 
                     {/* Tabs + Sort */}
                     <div className="mt-8 flex flex-col gap-5 sm:mt-10 sm:flex-row sm:items-center sm:justify-between">
