@@ -36,6 +36,7 @@ const PlanContextProvider = ({ children }) => {
         });
     };
 
+    // Mark as Done → শুধু Plan থেকে remove হবে
     const markAsDone = (workout) => {
         setPlan((currentPlan) =>
             currentPlan.filter(
@@ -44,10 +45,20 @@ const PlanContextProvider = ({ children }) => {
         );
     };
 
-    const removeFromSaved = (workout) => {
+    // Plan থেকে manually remove
+    const removeFromPlan = (workoutId) => {
+        setPlan((currentPlan) =>
+            currentPlan.filter(
+                (item) => item.id !== workoutId
+            )
+        );
+    };
+
+    // Saved থেকে remove
+    const removeFromSaved = (workoutId) => {
         setSaved((currentSaved) =>
             currentSaved.filter(
-                (item) => item.id !== workout.id
+                (item) => item.id !== workoutId
             )
         );
     };
@@ -60,6 +71,7 @@ const PlanContextProvider = ({ children }) => {
                 addToPlan,
                 addToSaved,
                 markAsDone,
+                removeFromPlan,
                 removeFromSaved,
             }}
         >

@@ -1,4 +1,6 @@
-const PlanSort = () => {
+"use client";
+
+const PlanSort = ({ sortBy, setSortBy }) => {
     return (
         <div className="flex items-center gap-3">
             <span className="text-xs font-medium text-[#777b85]">
@@ -6,7 +8,8 @@ const PlanSort = () => {
             </span>
 
             <select
-                defaultValue="duration"
+                value={sortBy}
+                onChange={(event) => setSortBy(event.target.value)}
                 className="rounded-lg border border-[#272b33] bg-[#15171c] px-3 py-2 text-xs font-medium text-white outline-none"
             >
                 <option value="duration">

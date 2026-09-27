@@ -3,18 +3,85 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
+import { toast } from "react-toastify";
 
 import { PlanContext } from "@/context/PlanContext";
 
 const PlanWorkoutCard = ({ workout, isPlan }) => {
-    const { markAsDone, removeFromSaved } =
+    const { markAsDone, removeFromPlan, removeFromSaved } =
         useContext(PlanContext);
+
+    const handleRemoveFromSaved = () => {
+        removeFromSaved(workout.id);
+
+        toast.success("Workout removed from saved.", {
+            position: "top-right",
+            autoClose: 700,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+
+            style: {
+                width: "270px",
+                minHeight: "40px",
+                padding: "8px 12px",
+                fontSize: "12px",
+            },
+        });
+    };
+
+    const handleRemoveFromPlan = () => {
+        removeFromPlan(workout.id);
+
+        toast.success("Workout removed from today's plan.", {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+
+            style: {
+                width: "270px",
+                minHeight: "40px",
+                padding: "8px 12px",
+                fontSize: "12px",
+            },
+        });
+    };
+
+    const handleMarkAsDone = () => {
+        markAsDone(workout);
+
+        toast.success("Congratulations! You completed this workout.", {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+
+            style: {
+                width: "270px",
+                minHeight: "40px",
+                padding: "8px 12px",
+                fontSize: "12px",
+            },
+        });
+    };
 
     return (
         <div className="flex flex-col gap-5 rounded-xl border border-[#272b33] bg-[#15171c] p-5 sm:flex-row sm:items-center">
 
             {/* Image */}
-            <div className="relative h-[120px] w-full shrink-0 overflow-hidden rounded-lg sm:h-[120px] sm:w-[125px]">
+            <div className="relative h-[120px] w-full shrink-0 overflow-hidden rounded-lg sm:h-[120px] sm:w-[175px]">
                 <Image
                     src={workout.image}
                     alt={workout.name}
@@ -49,10 +116,11 @@ const PlanWorkoutCard = ({ workout, isPlan }) => {
                     </span>
 
                 </div>
+
             </div>
 
             {/* Actions */}
-            <div className="flex shrink-0 flex-wrap items-center gap-2">
+            <div className="flex shrink-0 items-center gap-2">
 
                 <Link
                     href={`/workout/${workout.id}`}
@@ -61,26 +129,42 @@ const PlanWorkoutCard = ({ workout, isPlan }) => {
                     View Details
                 </Link>
 
-                {isPlan ? (
+                {/* Saved */}
+                {!isPlan && (
                     <button
                         type="button"
-                        onClick={() => markAsDone(workout)}
-                        className="inline-flex min-h-[38px] items-center justify-center rounded-md bg-[#ccff00] px-4 text-[10px] font-bold uppercase text-black transition hover:brightness-95 sm:text-xs"
-                    >
-                        Mark as Done
-                    </button>
-                ) : (
-                    <button
-                        type="button"
-                        onClick={() => removeFromSaved(workout)}
-                        aria-label={`Remove ${workout.name} from saved`}
-                        className="flex size-[38px] items-center justify-center rounded-md border border-[#30343d] text-lg leading-none text-[#a1a1aa] transition hover:border-red-500 hover:text-red-500"
+                        onClick={handleRemoveFromSaved}
+                        aria-label="Remove from saved"
+                        className="flex h-[38px] w-[38px] items-center justify-center rounded-md border border-[#30343d] text-lg font-medium text-[#92959d] transition hover:border-red-500 hover:text-red-500"
                     >
                         ×
                     </button>
                 )}
 
+                {/* Today's Plan */}
+                {isPlan && (
+                    <>
+                        <button
+                            type="button"
+                            onClick={handleMarkAsDone}
+                            className="inline-flex min-h-[38px] items-center justify-center rounded-md bg-[#ccff00] px-4 text-[10px] font-bold uppercase text-black transition hover:brightness-95 sm:text-xs"
+                        >
+                            Mark as Done
+                        </button>
+
+                        <button
+                            type="button"
+                            onClick={handleRemoveFromPlan}
+                            aria-label="Remove from plan"
+                            className="flex h-[38px] w-[38px] items-center justify-center rounded-md border border-[#30343d] text-lg font-medium text-[#92959d] transition hover:border-red-500 hover:text-red-500"
+                        >
+                            ×
+                        </button>
+                    </>
+                )}
+
             </div>
+
         </div>
     );
 };

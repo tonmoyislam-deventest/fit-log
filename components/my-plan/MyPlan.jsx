@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 
 import { PlanContext } from "@/context/PlanContext";
 
@@ -15,12 +15,30 @@ const MyPlan = () => {
     const { plan, saved } = useContext(PlanContext);
 
     const [activeTab, setActiveTab] = useState("plan");
+    const [sortBy, setSortBy] = useState("duration");
 
     const currentItems =
         activeTab === "plan"
             ? plan
             : saved;
 
+   const sortedItems = useMemo(() => {
+    return [...currentItems].sort((a, b) => {
+        if (sortBy === "duration") {
+            return a.duration - b.duration;
+        }
+
+        if (sortBy === "calories") {
+            return a.caloriesBurned - b.caloriesBurned;
+        }
+
+        if (sortBy === "rating") {
+            return b.rating - a.rating;
+        }
+
+        return 0;
+    });
+}, [currentItems, sortBy]);
     return (
         <main className="w-full">
 
@@ -28,13 +46,10 @@ const MyPlan = () => {
 
                 <div className="mx-auto w-full max-w-[1290px]">
 
-                    {/* Header */}
                     <MyPlanHeader />
 
-                    {/* Summary */}
                     <PlanSummary items={currentItems} />
 
-                    {/* Tabs + Sort */}
                     <div className="mt-8 flex flex-col gap-5 sm:mt-10 sm:flex-row sm:items-center sm:justify-between">
 
                         <PlanTabs
@@ -42,14 +57,16 @@ const MyPlan = () => {
                             setActiveTab={setActiveTab}
                         />
 
-                        <PlanSort />
+                        <PlanSort
+                            sortBy={sortBy}
+                            setSortBy={setSortBy}
+                        />
 
                     </div>
 
-                    {/* Workout List */}
                     <div className="mt-8 space-y-4">
 
-                        {currentItems.length === 0 ? (
+                        {sortedItems.length === 0 ? (
 
                             <EmptyPlan
                                 activeTab={activeTab}
@@ -57,7 +74,7 @@ const MyPlan = () => {
 
                         ) : (
 
-                            currentItems.map((workout) => (
+                            sortedItems.map((workout) => (
                                 <PlanWorkoutCard
                                     key={workout.id}
                                     workout={workout}

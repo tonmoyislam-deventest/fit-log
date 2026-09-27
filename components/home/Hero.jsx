@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 
 const Hero = () => {
     return (
         <section className="w-full px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
+
             <div className="mx-auto flex w-full max-w-[1350px] min-h-[calc(100svh-120px)] flex-col overflow-hidden rounded-xl border border-[#24272e] bg-[#15171c] px-6 py-10 sm:px-8 sm:py-12 md:flex-row md:items-center md:justify-between md:gap-8 lg:px-12 lg:py-14">
 
                 {/* Hero Content */}
@@ -24,8 +24,8 @@ const Hero = () => {
                         work add up.
                     </p>
 
-                    <Link
-                        href="/library"
+                    <a
+                        href="#workouts"
                         className="mt-8 inline-flex items-center gap-3 rounded-md bg-[#ccff00] px-5 py-3 text-sm font-bold uppercase tracking-wide text-black transition-transform duration-200 hover:scale-105 sm:px-6 sm:py-3.5"
                     >
                         <span>Browse Workouts</span>
@@ -33,7 +33,8 @@ const Hero = () => {
                         <span className="text-lg leading-none">
                             →
                         </span>
-                    </Link>
+                    </a>
+
                 </div>
 
                 {/* Hero Image */}
@@ -51,6 +52,7 @@ const Hero = () => {
                 </div>
 
             </div>
+
         </section>
     );
 };

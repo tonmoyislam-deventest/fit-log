@@ -3,7 +3,6 @@ import SortDropdown from "./SortDropdown";
 const WorkoutLibrary = () => {
     return (
         <section
-            id="library"
             className="w-full px-4 pt-12 sm:px-6 sm:pt-16 lg:px-8"
         >
             <div className="mx-auto w-full max-w-[1350px]">
