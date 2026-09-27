@@ -8,7 +8,7 @@ Users can explore different workouts, view workout details, add workouts to toda
 
 Next.js Workout Library & Workout Plan Application
 
-**Live Link :** [Live-Link]()
+**Live Link :** [Live-Link](https://fit-log-dev.netlify.app/)
 
 
 ## Features
