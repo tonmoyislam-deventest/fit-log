@@ -1,36 +1,202 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FitLog
+
+A responsive workout library web application built with Next.js, React, and Tailwind CSS.
+
+Users can explore different workouts, view workout details, add workouts to today's plan, save workouts for later, and manage their workout progress. The project focuses on practicing React and Next.js concepts while building a real-world style workout application.
+
+## Project Type
+
+Next.js Workout Library & Workout Plan Application
+
+**Live Link :** [Live-Link]()
+
+
+## Features
+
+- Fetch workout data from an external API
+- Display workouts dynamically using reusable components
+- View detailed workout information
+- Add workouts to Today's Plan
+- Save workouts for later
+- Mark workouts as completed
+- Remove workouts from Today's Plan
+- Remove saved workouts
+- Show total number of exercises
+- Calculate total workout minutes
+- Calculate total calories
+- Sort workouts by duration
+- Sort workouts by calories
+- Sort workouts by rating
+- Show different empty states for Today's Plan and Saved
+- Display toast notifications for user actions
+- Responsive layout for different screen sizes
+- Clean and modern UI using Tailwind CSS
+
+## Technologies Used
+
+- Next.js
+- React
+- JavaScript (ES6+)
+- Tailwind CSS
+- React Toastify
+- API
+
+## React Concepts Used
+
+### useState
+
+Used `useState` to manage application states such as:
+
+- Workout plan
+- Saved workouts
+- Active tab
+- Sorting option
+- Loading state
+
+### useEffect
+
+Used `useEffect` to fetch workout data from the API and update the application when the data changes.
+
+### Props
+
+Props are used to pass data and functions between components.
+
+For example:
+
+- Workout data is passed to the `WorkoutCard` component
+- Workout information is passed to workout detail components
+- Active tab state is passed to `PlanTabs`
+- Workout data is passed to plan workout components
+
+### Context API
+
+This project also helped me understand how shared application data can be managed using React Context API.
+
+The project uses Context API to manage:
+
+- Workout data
+- Today's Plan
+- Saved workouts
+
+### Destructuring
+
+Used object destructuring to make props, context values, and state easier to access inside components.
+
+### Conditional Rendering
+
+Used conditional logic to display different UI states based on the selected tab and available workout data.
+
+For example:
+
+- Show loading state while fetching data
+- Show empty state when there are no workouts
+- Show `Mark as Done` only for Today's Plan
+- Show remove option for saved workouts
+
+### Array Methods
+
+Used JavaScript array methods such as:
+
+- `.map()`
+- `.filter()`
+- `.some()`
+- Spread operator for creating new arrays
+
+## Responsive Design
+
+The interface is designed to work across different screen sizes.
+
+Tailwind CSS responsive utilities are used to adjust:
+
+- Grid columns
+- Workout card layout
+- Navbar layout
+- Spacing
+- Typography
+- Button layout
+- My Plan layout
+
+The workout cards change from a single-column layout on smaller screens to multiple columns on larger screens.
+
+## What I Learned
+
+While building this project, I practiced several important React and Next.js concepts.
+
+- How to fetch and display API data
+- How to manage application state using `useState`
+- How to run side effects using `useEffect`
+- How to share data using Context API
+- How to pass data and functions using props
+- How to use destructuring with component props and context
+- How to create reusable React components
+- How to use conditional rendering
+- How to use `.map()` to render dynamic content
+- How to use `.filter()` to remove items
+- How to use `.some()` to check existing items
+- How to build a workout plan system
+- How to implement sorting functionality
+- How to build responsive layouts using Tailwind CSS
+- How to organize a larger Next.js project into smaller components
+
+## Challenges & Solutions
+
+### Managing Today's Plan and Saved Workouts
+
+One of the challenges was keeping Today's Plan and Saved workouts separate.
+
+I solved this by using separate states inside the Context API to manage both types of workouts independently.
+
+### Preventing Duplicate Workouts
+
+Another challenge was preventing the same workout from being added multiple times.
+
+I used the `.some()` method to check whether a workout already exists before adding it.
+
+### Managing Workout Progress
+
+Handling the `Mark as Done` functionality was another challenge.
+
+I solved this by removing the completed workout from Today's Plan while keeping the Saved workouts separate.
+
+### Sorting Workouts
+
+Making the sorting system work for both Today's Plan and Saved workouts was another challenge.
+
+I used the selected tab and sorting option to determine which workouts should be sorted.
+
+### Responsive Layout
+
+Making the workout cards, navbar, hero section, and My Plan section work properly on different screen sizes was also a challenge.
+
+I used Tailwind CSS responsive utilities and adjusted the layout at different breakpoints.
+
+### Empty Workout States
+
+Sometimes there are no workouts available in Today's Plan or Saved.
+
+I added conditional rendering to show an appropriate empty state when no workouts are available.
 
 ## Getting Started
 
-First, run the development server:
+To run this project locally:
+
+### 1. Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/tonmoyislam-deventest/fit-log
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Go to the project directory
+```bash
+cd fit-log
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 3. Install dependencies
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 4. Start the development server
+```bash
+npm run dev
+```
