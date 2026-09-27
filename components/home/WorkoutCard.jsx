@@ -1,13 +1,19 @@
+import Image from "next/image";
+import Link from "next/link";
+
 const WorkoutCard = () => {
     return (
-        <article className="overflow-hidden rounded-xl border border-[#252830] bg-[#15171c]">
-
+        <Link
+            href="/workout"
+            className="block overflow-hidden rounded-xl border border-[#252830] bg-[#15171c] no-underline"
+        >
             {/* Image */}
-            <div className="h-[190px] w-full overflow-hidden sm:h-[200px]">
-                <img
+            <div className="relative h-[190px] w-full overflow-hidden sm:h-[200px]">
+                <Image
                     src="/images/workout.png"
                     alt="Workout"
-                    className="h-full w-full object-cover"
+                    fill
+                    className="object-cover"
                 />
             </div>
 
@@ -53,7 +59,7 @@ const WorkoutCard = () => {
                 </div>
 
             </div>
-        </article>
+        </Link>
     );
 };
 
