@@ -1,19 +1,23 @@
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import WorkoutContextProvider from "@/context/WorkoutContext";
+import PlanContextProvider from "@/context/PlanContext";
+import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body>
                 <WorkoutContextProvider>
-                    <Navbar />
+                    <PlanContextProvider>
+                        <Navbar />
 
-                    {children}
+                        {children}
 
+                        <ToastContainer />
+                    </PlanContextProvider>
                 </WorkoutContextProvider>
-
-                {/* <Footer /> */}
             </body>
         </html>
     );

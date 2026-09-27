@@ -1,17 +1,27 @@
-const PlanTabs = () => {
+const PlanTabs = ({ activeTab, setActiveTab }) => {
     return (
-        <div className="inline-flex w-fit rounded-xl border border-[#272b33] bg-[#15171c] p-1">
+        <div className="flex w-fit items-center rounded-xl border border-[#272b33] bg-[#15171c] p-1">
 
             <button
                 type="button"
-                className="rounded-lg px-4 py-2 text-xs font-bold text-[#8f939d] transition hover:text-white sm:px-5"
+                onClick={() => setActiveTab("plan")}
+                className={`rounded-lg px-7 py-2.5 text-xs font-bold transition ${
+                    activeTab === "plan"
+                        ? "bg-[#252830] text-white"
+                        : "text-[#71717a] hover:text-white"
+                }`}
             >
                 Today&apos;s Plan
             </button>
 
             <button
                 type="button"
-                className="rounded-lg bg-[#20242c] px-4 py-2 text-xs font-bold text-white shadow-sm sm:px-5"
+                onClick={() => setActiveTab("saved")}
+                className={`rounded-lg px-7 py-2.5 text-xs font-bold transition ${
+                    activeTab === "saved"
+                        ? "bg-[#252830] text-white"
+                        : "text-[#71717a] hover:text-white"
+                }`}
             >
                 Saved
             </button>

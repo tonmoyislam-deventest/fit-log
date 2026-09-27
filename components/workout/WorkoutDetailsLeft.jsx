@@ -1,15 +1,14 @@
-const WorkoutDetailsLeft = () => {
+import Image from "next/image";
+
+const WorkoutDetailsLeft = ({ workout }) => {
     return (
-        <div className="flex h-full w-full items-center">
-            <div className="w-full overflow-hidden rounded-xl border border-[#272b33] bg-[#15171c]">
-                <div className="aspect-square w-full">
-                    <img
-                        src="/images/workout-detail.png"
-                        alt="Barbell Bench Press"
-                        className="h-full w-full object-cover"
-                    />
-                </div>
-            </div>
+        <div className="relative min-h-[400px] w-full overflow-hidden rounded-xl">
+            <Image
+                src={workout.image}
+                alt={workout.name}
+                fill
+                className="object-cover object-[50%_20%]"
+            />
         </div>
     );
 };

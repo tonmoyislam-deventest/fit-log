@@ -1,23 +1,21 @@
-import Link from "next/link";
-
-const EmptyPlan = () => {
+const EmptyPlan = ({ activeTab }) => {
     return (
-        <div className="mt-6 flex min-h-[280px] w-full flex-col items-center justify-center rounded-xl border border-dashed border-[#272b33] px-5 text-center sm:mt-7 sm:min-h-[300px]">
+        <div className="mt-6 flex min-h-[340px] flex-col items-center justify-center rounded-xl border border-dashed border-[#272b33] px-5 text-center">
 
-            <h2 className="text-2xl font-black uppercase leading-none text-white sm:text-3xl">
-                Nothing Here Yet
+            <div className="flex size-12 items-center justify-center rounded-full border border-[#30343d] text-xl text-[#71717a]">
+                +
+            </div>
+
+            <h2 className="mt-4 text-lg font-bold uppercase text-white">
+                Nothing here yet
             </h2>
 
-            <p className="mt-3 max-w-md text-sm leading-6 text-[#777b85]">
-                Browse the library and add a lift to get today moving.
+            <p className="mt-2 max-w-md text-sm leading-6 text-[#71717a]">
+                {activeTab === "plan"
+                    ? "Add workouts to your today's plan and they will appear here."
+                    : "Save workouts for later and they will appear here."
+                }
             </p>
-
-            <Link
-                href="/"
-                className="mt-6 inline-flex items-center justify-center rounded-full bg-[#ccff00] px-6 py-3 text-xs font-black uppercase text-black transition hover:brightness-95"
-            >
-                Go to workouts
-            </Link>
 
         </div>
     );
