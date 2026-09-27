@@ -1,14 +1,18 @@
-import "./globals.css";
 
-export const metadata = {
-  title: "FitLog",
-  description: "Workout Library and Training Log",
-};
+import "./globals.css";
+import Navbar from "@/components/layout/Navbar";
 
 export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <body>
+                <Navbar />
+
+                {children}
+
+                {/* <Footer /> */}
+            </body>
+        </html>
+    );
 }
+
