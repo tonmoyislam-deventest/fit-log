@@ -1,18 +1,20 @@
-
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
+import WorkoutContextProvider from "@/context/WorkoutContext";
 
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body>
-                <Navbar />
+                <WorkoutContextProvider>
+                    <Navbar />
 
-                {children}
+                    {children}
+
+                </WorkoutContextProvider>
 
                 {/* <Footer /> */}
             </body>
         </html>
     );
 }
-
